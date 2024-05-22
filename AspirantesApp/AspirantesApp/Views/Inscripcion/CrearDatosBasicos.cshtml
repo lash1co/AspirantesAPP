@@ -1,0 +1,328 @@
+﻿@model AspirantesApp.Models.ViewModels.AspiranteViewModel
+
+@{
+    ViewBag.Title = "- Datos Básicos";
+}
+<div class="form-group row">
+    <div class="col-md-3">
+        <h3 class="headline-left-90">Admisiones</h3>
+        <h6>Sistema Académico - SAMI 2.0</h6>
+    </div>
+    <div class="col-md-9">
+        <div class="right-container">
+            <h2>Información de Inscripción</h2>
+            <h6 class="headline">Admisiones</h6>
+        </div>
+    </div>
+</div>
+
+    <h6>Información Personal</h6>
+
+    @using (Html.BeginForm("CrearDatosBasicos", "Inscripcion", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validarFoto();" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.PrimerNombre, "Primer nombre *:", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.PrimerNombre, new { htmlAttributes = new { @class = "form-control", type = "text", pattern = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]*" } })
+                            @Html.ValidationMessageFor(model => model.PrimerNombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.SegundoNombre, "Segundo nombre :", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.SegundoNombre, new { htmlAttributes = new { @class = "form-control", type = "text", pattern = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]*" } })
+                            @Html.ValidationMessageFor(model => model.SegundoNombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.PrimerApellido, "Primer apellido *:", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control", type = "text", pattern = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]*" } })
+                            @Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.SegundoApellido, "Segundo apellido *:", htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control", type = "text", pattern = "[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]*" } })
+                            @Html.ValidationMessageFor(model => model.SegundoApellido, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <img id="imagePreview" src="~/Images/user.png" alt="Da click para subir una foto" style="cursor: pointer; width: 100px; height: 100px;" />
+                    @Html.TextBoxFor(model => model.Foto, new { type = "file", id = "fileInput", style = "display:none;", accept = "image/*" })
+                    @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger", id = "fotoError" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Fecha_Nacimiento, "Fecha de nacimiento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.TextBoxFor(model => model.Fecha_Nacimiento, new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(model => model.Fecha_Nacimiento, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Id_Pais_Nacimiento, "País de nacimiento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Pais_Nacimiento, (IEnumerable<SelectListItem>)ViewBag.Paises, "Seleccione", new { @class = "form-control", id = "paisNacimiento" })
+                    @Html.ValidationMessageFor(model => model.Id_Pais_Nacimiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Id_Departamento_Nacimiento, "Departamento de nacimiento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Departamento_Nacimiento, (IEnumerable<SelectListItem>)ViewBag.Departamentos, "Seleccione", new { @class = "form-control", id = "departamentoNacimiento" })
+                    @Html.ValidationMessageFor(model => model.Id_Departamento_Nacimiento, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Id_Ciudad_Nacimiento, "Ciudad de nacimiento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Ciudad_Nacimiento, (IEnumerable<SelectListItem>)ViewBag.Municipios, "Seleccione", new { @class = "form-control", id = "ciudadNacimiento" })
+                    @Html.ValidationMessageFor(model => model.Id_Ciudad_Nacimiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Id_Grupo_Sanguineo, "Grupo sanguíneo *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownList("Id_Grupo_Sanguineo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Grupo_Sanguineo, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Id_Tipo_Documento, "Tipo de documento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownList("Id_Tipo_Documento", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Tipo_Documento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Numero_Documento, "Número de documento *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.EditorFor(model => model.Numero_Documento, new { htmlAttributes = new { @class = "form-control", type = "text", pattern = "[0-9]*" } })
+                    @Html.ValidationMessageFor(model => model.Numero_Documento, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Fecha_Expedicion, "Fecha de expedición *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.TextBoxFor(model => model.Fecha_Expedicion, new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(model => model.Fecha_Expedicion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Id_Pais_Expedicion, "País de expedición *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Pais_Expedicion, (IEnumerable<SelectListItem>)ViewBag.Paises, "Seleccione", new { @class = "form-control", id = "paisExpedicion" })
+                    @Html.ValidationMessageFor(model => model.Id_Pais_Expedicion, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Id_Departamento_Expedicion, "Departamento de expedición *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Departamento_Expedicion, (IEnumerable<SelectListItem>)ViewBag.Departamentos, "Seleccione", new { @class = "form-control", id = "departamentoExpedicion" })
+                    @Html.ValidationMessageFor(model => model.Id_Departamento_Expedicion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Id_Ciudad_Expedicion, "Ciudad de expedición *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.DropDownListFor(model => model.Id_Ciudad_Expedicion, (IEnumerable<SelectListItem>)ViewBag.Municipios, "Seleccione", new { @class = "form-control", id = "ciudadExpedicion" })
+                    @Html.ValidationMessageFor(model => model.Id_Ciudad_Expedicion, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Id_Genero, "Sexo *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    <div class="p-3 border rounded">
+                        <div class="row">
+                            @foreach (var item in (SelectList)ViewBag.Id_Genero)
+                            {
+                                <div class="col">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.Id_Genero, item.Value, new { @class = "form-check-input" })
+                                        <label class="form-check-label">@item.Text</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Id_Genero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Id_Estado_Civil, "Estado civil *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    <div class="p-3 border rounded">
+                        <div class="row">
+                            @foreach (var item in (SelectList)ViewBag.Id_Estado_Civil)
+                            {
+                                <div class="col">
+                                    <div class="form-check">
+                                        @Html.RadioButtonFor(model => model.Id_Estado_Civil, item.Value, new { @class = "form-check-input" })
+                                        <label class="form-check-label">@item.Text</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Id_Estado_Civil, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Numero_Telefono, "Número telefonico :", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.EditorFor(model => model.Numero_Telefono, new { htmlAttributes = new { @class = "form-control", type = "tel", inputmode = "numeric", pattern = "[0-9]*" } })
+                    @Html.ValidationMessageFor(model => model.Numero_Telefono, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Numero_Celular, "Número de celular *:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col">
+                    @Html.EditorFor(model => model.Numero_Celular, new { htmlAttributes = new { @class = "form-control", type = "text", inputmode = "numeric", pattern = "[0-9]*" } })
+                    @Html.ValidationMessageFor(model => model.Numero_Celular, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group text-right">
+                <div class="col-md-12">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    @Html.ActionLink("Cancelar", "Index", "Inscripcion", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+
+    }
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                document.getElementById('imagePreview').onclick = function () {
+                    document.getElementById('fileInput').click();
+                };
+
+                document.getElementById('fileInput').onchange = function (event) {
+                    var file = event.target.files[0];
+                    if (file) {
+                        if (!file.type.startsWith('image/')) {
+                            alert('Por favor selecciona una imagen válida.');
+                            document.getElementById('fileInput').value = '';
+                            return;
+                        }
+                        var reader = new FileReader();
+                        reader.onload = function () {
+                            var output = document.getElementById('imagePreview');
+                            output.src = reader.result;
+                        };
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                };
+                function validarFoto() {
+                    var fotoInput = document.getElementById('fileInput');
+                    var fotoError = document.getElementById('fotoError');
+                    if (fotoInput.files.length === 0) {
+                        fotoError.textContent = 'Por favor, selecciona una foto.';
+                        return false;
+                    }
+                    fotoError.textContent = '';
+                    return true;
+                }
+            $('#PrimerNombre').on('input', function () {
+                this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
+            });
+            $('#SegundoNombre').on('input', function () {
+                this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
+            });
+            $('#PrimerApellido').on('input', function () {
+                this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
+            });
+            $('#SegundoApellido').on('input', function () {
+                this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
+            });
+            $('#Numero_Celular').on('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+            $('#Numero_Telefono').on('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+            $('#Numero_Documento').on('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+            $("#paisNacimiento").change(function () {
+    var paisId = $(this).val();
+    $.ajax({
+        url: '@Url.Action("GetDepartamentosByPais", "Inscripcion")',
+        type: 'GET',
+        data: { paisId: paisId },
+        success: function (data) {
+            $("#departamentoNacimiento").empty();
+            $("#departamentoNacimiento").append('<option value>Selecciona</option>');
+            $.each(data, function (index, item) {
+                $("#departamentoNacimiento").append('<option value="' + item.Id + '">' + item.Nombre + '</option>');
+            });
+        }
+    });
+});
+
+$("#departamentoNacimiento").change(function () {
+    var departamentoId = $(this).val();
+    $.ajax({
+        url: '@Url.Action("GetMunicipiosByDepartamento", "Inscripcion")',
+        type: 'GET',
+        data: { departamentoId: departamentoId },
+        success: function (data) {
+            $("#ciudadNacimiento").empty();
+            $("#ciudadNacimiento").append('<option value>Selecciona</option>');
+            $.each(data, function (index, item) {
+                $("#ciudadNacimiento").append('<option value="' + item.Id + '">' + item.Nombre + '</option>');
+            });
+        }
+    });
+});
+
+$("#paisExpedicion").change(function () {
+    var paisId = $(this).val();
+    $.ajax({
+        url: '@Url.Action("GetDepartamentosByPais", "Inscripcion")',
+        type: 'GET',
+        data: { paisId: paisId },
+        success: function (data) {
+            $("#departamentoExpedicion").empty();
+            $("#departamentoExpedicion").append('<option value>Selecciona</option>');
+            $.each(data, function (index, item) {
+                $("#departamentoExpedicion").append('<option value="' + item.Id + '">' + item.Nombre + '</option>');
+            });
+        }
+    });
+});
+
+$("#departamentoExpedicion").change(function () {
+    var departamentoId = $(this).val();
+    $.ajax({
+        url: '@Url.Action("GetMunicipiosByDepartamento", "Inscripcion")',
+        type: 'GET',
+        data: { departamentoId: departamentoId },
+        success: function (data) {
+            $("#ciudadExpedicion").empty();
+            $("#ciudadExpedicion").append('<option value>Selecciona</option>');
+            $.each(data, function (index, item) {
+                $("#ciudadExpedicion").append('<option value="' + item.Id + '">' + item.Nombre + '</option>');
+            });
+        }
+    });
+});
+        });
+        </script>
+    }
+

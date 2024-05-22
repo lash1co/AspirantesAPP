@@ -1,0 +1,53 @@
+﻿@model AspirantesApp.Models.ViewModels.DatosBasicosViewModel
+
+@{
+    ViewBag.Title = "- Datos Básicos";
+}
+
+<div class="form-group row">
+    <div class="col-md-3">
+        <h3 class="headline-left-90">Admisiones</h3>
+        <h6>Sistema Académico - SAMI 2.0</h6>
+    </div>
+    <div class="col-md-9">
+        <div class="right-container">
+            <h2>Información de Inscripción</h2>
+            <h6 class="headline">Admisiones</h6>
+        </div>
+    </div>
+</div>
+
+<h6>Información Personal</h6>
+
+<div class="card-deck justify-content-center">
+    <div class="@((Model.Completo) ? "custom-card-complete" : "custom-card-incomplete")">
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col">
+                    <p class="card-img"><img src="~/Imagenes/@Model.Foto" alt="foto de perfil" style="cursor: pointer; width: 100px; height: 100px;" /></p>
+                    <p class="card-text">Nombres: @Model.Nombres</p>
+                    <p class="card-text">Apellidos: @Model.Apellidos</p>
+                    <p class="card-text">Fecha de Nacimiento: @Model.Fecha_Nacimiento</p>
+                    <p class="card-text">Ciudad de Nacimiento: @Model.Ciudad_Nacimiento</p>
+                </div>
+                <div class="col">
+                    <p class="card-text">Fecha de Expedición: @Model.Fecha_Expedicion</p>
+                    <p class="card-text">Ciudad de Expedición: @Model.Ciudad_Expedicion</p>
+                    <p class="card-text">Tipo de Documento: @Model.Tipo_Documento</p>
+                    <p class="card-text">Número de Documento: @Model.Numero_Documento</p>
+                    <p class="card-text">Grupo Sanguíneo: @Model.Grupo_Sanguineo</p>
+                </div>
+                <div class="col">
+                    <p class="card-text">Estado Civil: @Model.Estado_Civil</p>
+                    <p class="card-text">Sexo: @Model.Sexo</p>
+                    <p class="card-text">Número de Teléfono: @Model.Numero_Telefono</p>
+                    <p class="card-text">Número de Celular: @Model.Numero_Celular</p>
+                </div>
+            </div>
+            <div class="text-center">
+                @Html.ActionLink("Información de Inscripción", "Index", null, new { @class = "btn btn-info" })
+            </div>
+        </div>
+    </div>
+</div>
+

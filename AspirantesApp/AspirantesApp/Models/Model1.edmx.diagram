@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf0c01628d7a491e988ae4186be34b51" Name="Diagram1">
+        <EntityTypeShape EntityType="UAMDBModel.Aspirante" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Departamento" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Estado_Civil" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Estado_Inscripcion" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Genero" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Grupo_Sanguineo" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Inscripcion" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Modalidad" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Municipio" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Pais" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Periodo_Academico" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Programa_Academico" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Sede" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Tipo_Aspirante" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Tipo_Documento" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UAMDBModel.Usuario" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Estado_Civil" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Genero" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Grupo_Sanguineo" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Inscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Municipio_Expedicion" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Municipio_Nacimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Aspirante_Tipo_Documento" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Departamento_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Municipio_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Estado_Inscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Modalidad" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Periodo_Academico" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Programa_Academico" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Sede" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Tipo_Aspirante" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Inscripcion_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="UAMDBModel.FK_Usuario_Tipo_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

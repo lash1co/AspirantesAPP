@@ -1,0 +1,47 @@
+﻿@model AspirantesApp.Models.ViewModels.LoginViewModel
+
+@using (Html.BeginForm("Login", "Acceso", FormMethod.Post, new { @class = "form-horizontal-login-register", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    if (ViewData.ModelState[""] != null)
+    {
+        <div class="alert alert-danger">
+            @ViewData.ModelState[""].Errors[0].ErrorMessage
+        </div>
+    }
+
+<div class="form-group row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.Correo, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Correo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+        </div>
+        <div class="col-md-8">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            @Html.ActionLink("¿No tienes una cuenta? Registrate aquí", "Registrar", "Acceso", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+    }

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AspirantesApp.Models.Inscripcion>
+
+@{
+    ViewBag.Title = "- Información de Inscripción";
+}
+<div class="form-group row">
+    <div class="col-md-3">
+        <h3 class="headline-left-90">Admisiones</h3>
+        <h6>Sistema Académico - SAMI 2.0</h6>
+    </div>
+    <div class="col-md-9">
+        <div class="right-container">
+            <h2>Información de Inscripción</h2>
+            <h6 class="headline">Admisiones</h6>
+        </div>
+    </div>
+</div>
+<h6>Información de Inscripción</h6>
+
+<div class="card-deck justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="@((item.Completo) ? "custom-card-complete" : "custom-card-incomplete")">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col">
+                        <p class="card-text">Tipo de Aspirante: @item.Tipo_Aspirante.Tipo</p>
+                        <p class="card-text">Email del Usuario: @item.Usuario.Email</p>
+                        <p class="card-text">Estado Inscripción: @item.Estado_Inscripcion.Estado</p>
+                        <p class="card-text">Modalidad: @item.Modalidad.Tipo</p>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">Periodo Académico: @item.Periodo_Academico.Periodo</p>
+                        <p class="card-text">Programa Académico: @item.Programa_Academico.Nombre</p>
+                        <p class="card-text">Sede: @item.Sede.Nombre</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    @if (!item.Completo)
+                    {
+                        @Html.ActionLink("Editar Información de Inscripción", "CrearEditarInscripcion", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    }
+                    @Html.ActionLink("Información Personal", "DatosBasicos", new { id = item.Id }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

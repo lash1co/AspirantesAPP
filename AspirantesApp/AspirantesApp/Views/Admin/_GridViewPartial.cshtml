@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AspirantesApp.Models.ViewModels.AspirantesDetalleViewModel>
+
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "GridView";
+    settings.CallbackRouteValues = new { Controller = "Admin", Action = "GridViewPartial" }; // Asegúrate de que los callbacks sean manejados correctamente
+    settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+    // Configurar la propiedad AllowEllipsisInText
+    settings.SettingsBehavior.AllowEllipsisInText = true;
+    settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+
+    settings.CommandColumn.Visible = false;
+    settings.CommandColumn.ShowNewButton = false;
+    settings.CommandColumn.ShowDeleteButton = false;
+    settings.CommandColumn.ShowEditButton = false;
+
+    settings.KeyFieldName = "Id";
+
+    settings.Styles.Header.BackColor = System.Drawing.Color.Gray;
+    settings.Styles.Header.ForeColor = System.Drawing.Color.White;
+
+    settings.SettingsPager.Visible = true;
+    settings.SettingsPager.Summary.Visible = true;
+    settings.SettingsPager.PageSize = 10;
+    settings.SettingsPager.PageSizeItemSettings.Visible = true;
+    settings.SettingsPager.PageSizeItemSettings.Items = new[] { "5", "10", "20", "50" };
+    settings.SettingsPager.PageSizeItemSettings.Position = PagerPageSizePosition.Right;
+    settings.SettingsPager.Position = System.Web.UI.WebControls.PagerPosition.TopAndBottom;
+    settings.Settings.ShowGroupPanel = true;
+    settings.Settings.ShowHeaderFilterButton = true;
+    settings.Settings.ShowFilterRow = true;
+    settings.SettingsBehavior.AllowSelectByRowClick = true;
+    settings.SettingsPager.FirstPageButton.Visible = true;
+    settings.SettingsPager.LastPageButton.Visible = true;
+
+    settings.SettingsAdaptivity.AdaptivityMode = GridViewAdaptivityMode.Off;
+    settings.SettingsAdaptivity.AdaptiveColumnPosition = GridViewAdaptiveColumnPosition.Right;
+    settings.SettingsAdaptivity.AdaptiveDetailColumnCount = 1;
+    settings.SettingsAdaptivity.AllowOnlyOneAdaptiveDetailExpanded = false;
+    settings.SettingsAdaptivity.HideDataCellsAtWindowInnerWidth = 0;
+
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "DocumentosAdjuntos"; // Nombre del campo en tu modelo de datos que contiene la ruta del icono
+        column.Caption = "Documentos";
+        column.ColumnType = MVCxGridViewColumnType.Image;
+        column.EditorProperties().Image(i =>
+        {
+            i.ImageWidth = 20;
+            i.ImageHeight = 20;
+        });
+    });
+    settings.Columns.Add("Estado");
+    settings.Columns.Add("Sede");
+    settings.Columns.Add("ProgramaAcademico");
+    settings.Columns.Add("PeriodoAcademico");
+    settings.Columns.Add("TipoDocumento");
+    settings.Columns.Add("NumeroDocumento");
+    settings.Columns.Add("Nombres");
+    settings.Columns.Add("Apellidos");
+    settings.Columns.Add("NumeroTelefono");
+    settings.Columns.Add("NumeroCelular");
+    settings.Columns.Add("Correo");
+}).Bind(Model).GetHtml()
+

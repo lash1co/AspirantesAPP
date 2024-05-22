@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UAMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aspirante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Id_Ciudad_Nacimiento" Type="int" Nullable="false" />
+          <Property Name="Id_Grupo_Sanguineo" Type="int" Nullable="false" />
+          <Property Name="Id_Tipo_Documento" Type="int" Nullable="false" />
+          <Property Name="Numero_Documento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha_Expedicion" Type="date" Nullable="false" />
+          <Property Name="Id_Ciudad_Expedicion" Type="int" Nullable="false" />
+          <Property Name="Id_Genero" Type="int" Nullable="false" />
+          <Property Name="Id_Estado_Civil" Type="int" Nullable="false" />
+          <Property Name="Numero_Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Numero_Celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Id_Inscripcion" Type="bigint" Nullable="false" />
+          <Property Name="Completo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Id_Pais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado_Civil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado_Inscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grupo_Sanguineo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grupo" Type="nchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tipo_Aspirante" Type="int" Nullable="false" />
+          <Property Name="Id_Modalidad" Type="int" Nullable="false" />
+          <Property Name="Id_Sede" Type="int" Nullable="false" />
+          <Property Name="Id_Programa" Type="int" Nullable="false" />
+          <Property Name="Id_Periodo" Type="int" Nullable="false" />
+          <Property Name="Id_Estado_Inscripcion" Type="int" Nullable="false" />
+          <Property Name="Id_Usuario" Type="bigint" Nullable="false" />
+          <Property Name="Completo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modalidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="Id_Departamento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periodo_Academico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Periodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Programa_Academico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Aspirante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Documento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Rol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Aspirante_Estado_Civil">
+          <End Role="Estado_Civil" Type="Self.Estado_Civil" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Civil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Estado_Civil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Grupo_Sanguineo">
+          <End Role="Grupo_Sanguineo" Type="Self.Grupo_Sanguineo" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo_Sanguineo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Grupo_Sanguineo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Inscripcion">
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Municipio_Expedicion">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Ciudad_Expedicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Municipio_Nacimiento">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Ciudad_Nacimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Tipo_Documento">
+          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Documento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Tipo_Documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Estado_Inscripcion">
+          <End Role="Estado_Inscripcion" Type="Self.Estado_Inscripcion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Inscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Estado_Inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Modalidad">
+          <End Role="Modalidad" Type="Self.Modalidad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Modalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Periodo_Academico">
+          <End Role="Periodo_Academico" Type="Self.Periodo_Academico" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo_Academico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Periodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Programa_Academico">
+          <End Role="Programa_Academico" Type="Self.Programa_Academico" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programa_Academico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Tipo_Aspirante">
+          <End Role="Tipo_Aspirante" Type="Self.Tipo_Aspirante" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Aspirante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Tipo_Aspirante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Tipo_Usuario">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Id_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAMDBModelStoreContainer">
+          <EntitySet Name="Aspirante" EntityType="Self.Aspirante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado_Civil" EntityType="Self.Estado_Civil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado_Inscripcion" EntityType="Self.Estado_Inscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupo_Sanguineo" EntityType="Self.Grupo_Sanguineo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripcion" EntityType="Self.Inscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modalidad" EntityType="Self.Modalidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periodo_Academico" EntityType="Self.Periodo_Academico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programa_Academico" EntityType="Self.Programa_Academico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Aspirante" EntityType="Self.Tipo_Aspirante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Aspirante_Estado_Civil" Association="Self.FK_Aspirante_Estado_Civil">
+            <End Role="Estado_Civil" EntitySet="Estado_Civil" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Genero" Association="Self.FK_Aspirante_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Grupo_Sanguineo" Association="Self.FK_Aspirante_Grupo_Sanguineo">
+            <End Role="Grupo_Sanguineo" EntitySet="Grupo_Sanguineo" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Inscripcion" Association="Self.FK_Aspirante_Inscripcion">
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Municipio_Expedicion" Association="Self.FK_Aspirante_Municipio_Expedicion">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Municipio_Nacimiento" Association="Self.FK_Aspirante_Municipio_Nacimiento">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Tipo_Documento" Association="Self.FK_Aspirante_Tipo_Documento">
+            <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Estado_Inscripcion" Association="Self.FK_Inscripcion_Estado_Inscripcion">
+            <End Role="Estado_Inscripcion" EntitySet="Estado_Inscripcion" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Modalidad" Association="Self.FK_Inscripcion_Modalidad">
+            <End Role="Modalidad" EntitySet="Modalidad" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Periodo_Academico" Association="Self.FK_Inscripcion_Periodo_Academico">
+            <End Role="Periodo_Academico" EntitySet="Periodo_Academico" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Programa_Academico" Association="Self.FK_Inscripcion_Programa_Academico">
+            <End Role="Programa_Academico" EntitySet="Programa_Academico" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Sede" Association="Self.FK_Inscripcion_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Tipo_Aspirante" Association="Self.FK_Inscripcion_Tipo_Aspirante">
+            <End Role="Tipo_Aspirante" EntitySet="Tipo_Aspirante" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Usuario" Association="Self.FK_Inscripcion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Departamento" Association="Self.FK_Municipio_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UAMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Aspirante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Ciudad_Nacimiento" Type="Int32" Nullable="false" />
+          <Property Name="Id_Grupo_Sanguineo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tipo_Documento" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Expedicion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Ciudad_Expedicion" Type="Int32" Nullable="false" />
+          <Property Name="Id_Genero" Type="Int32" Nullable="false" />
+          <Property Name="Id_Estado_Civil" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Inscripcion" Type="Int64" Nullable="false" />
+          <Property Name="Completo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Estado_Civil" Relationship="Self.FK_Aspirante_Estado_Civil" FromRole="Aspirante" ToRole="Estado_Civil" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK_Aspirante_Genero" FromRole="Aspirante" ToRole="Genero" />
+          <NavigationProperty Name="Grupo_Sanguineo" Relationship="Self.FK_Aspirante_Grupo_Sanguineo" FromRole="Aspirante" ToRole="Grupo_Sanguineo" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Aspirante_Inscripcion" FromRole="Aspirante" ToRole="Inscripcion" />
+          <NavigationProperty Name="Municipio" Relationship="Self.FK_Aspirante_Municipio_Expedicion" FromRole="Aspirante" ToRole="Municipio" />
+          <NavigationProperty Name="Municipio1" Relationship="Self.FK_Aspirante_Municipio_Nacimiento" FromRole="Aspirante" ToRole="Municipio" />
+          <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK_Aspirante_Tipo_Documento" FromRole="Aspirante" ToRole="Tipo_Documento" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
+          <NavigationProperty Name="Municipio" Relationship="Self.FK_Municipio_Departamento" FromRole="Departamento" ToRole="Municipio" />
+        </EntityType>
+        <EntityType Name="Estado_Civil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Estado_Civil" FromRole="Estado_Civil" ToRole="Aspirante" />
+        </EntityType>
+        <EntityType Name="Estado_Inscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Estado_Inscripcion" FromRole="Estado_Inscripcion" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Genero" FromRole="Genero" ToRole="Aspirante" />
+        </EntityType>
+        <EntityType Name="Grupo_Sanguineo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grupo" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Grupo_Sanguineo" FromRole="Grupo_Sanguineo" ToRole="Aspirante" />
+        </EntityType>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tipo_Aspirante" Type="Int32" Nullable="false" />
+          <Property Name="Id_Modalidad" Type="Int32" Nullable="false" />
+          <Property Name="Id_Sede" Type="Int32" Nullable="false" />
+          <Property Name="Id_Programa" Type="Int32" Nullable="false" />
+          <Property Name="Id_Periodo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Estado_Inscripcion" Type="Int32" Nullable="false" />
+          <Property Name="Id_Usuario" Type="Int64" Nullable="false" />
+          <Property Name="Completo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Inscripcion" FromRole="Inscripcion" ToRole="Aspirante" />
+          <NavigationProperty Name="Estado_Inscripcion" Relationship="Self.FK_Inscripcion_Estado_Inscripcion" FromRole="Inscripcion" ToRole="Estado_Inscripcion" />
+          <NavigationProperty Name="Modalidad" Relationship="Self.FK_Inscripcion_Modalidad" FromRole="Inscripcion" ToRole="Modalidad" />
+          <NavigationProperty Name="Periodo_Academico" Relationship="Self.FK_Inscripcion_Periodo_Academico" FromRole="Inscripcion" ToRole="Periodo_Academico" />
+          <NavigationProperty Name="Programa_Academico" Relationship="Self.FK_Inscripcion_Programa_Academico" FromRole="Inscripcion" ToRole="Programa_Academico" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK_Inscripcion_Sede" FromRole="Inscripcion" ToRole="Sede" />
+          <NavigationProperty Name="Tipo_Aspirante" Relationship="Self.FK_Inscripcion_Tipo_Aspirante" FromRole="Inscripcion" ToRole="Tipo_Aspirante" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Inscripcion_Usuario" FromRole="Inscripcion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Modalidad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Modalidad" FromRole="Modalidad" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Municipio_Expedicion" FromRole="Municipio" ToRole="Aspirante" />
+          <NavigationProperty Name="Aspirante1" Relationship="Self.FK_Aspirante_Municipio_Nacimiento" FromRole="Municipio" ToRole="Aspirante" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Municipio_Departamento" FromRole="Municipio" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Periodo_Academico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Periodo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Periodo_Academico" FromRole="Periodo_Academico" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Programa_Academico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Programa_Academico" FromRole="Programa_Academico" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Sede" FromRole="Sede" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Tipo_Aspirante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Tipo_Aspirante" FromRole="Tipo_Aspirante" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Tipo_Documento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Aspirante" Relationship="Self.FK_Aspirante_Tipo_Documento" FromRole="Tipo_Documento" ToRole="Aspirante" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Rol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inscripcion" Relationship="Self.FK_Inscripcion_Usuario" FromRole="Usuario" ToRole="Inscripcion" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK_Usuario_Tipo_Usuario" FromRole="Usuario" ToRole="Tipo_Usuario" />
+        </EntityType>
+        <Association Name="FK_Aspirante_Estado_Civil">
+          <End Role="Estado_Civil" Type="Self.Estado_Civil" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Civil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Estado_Civil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Grupo_Sanguineo">
+          <End Role="Grupo_Sanguineo" Type="Self.Grupo_Sanguineo" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo_Sanguineo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Grupo_Sanguineo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Inscripcion">
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Municipio_Expedicion">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Ciudad_Expedicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Municipio_Nacimiento">
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Ciudad_Nacimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aspirante_Tipo_Documento">
+          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="1" />
+          <End Role="Aspirante" Type="Self.Aspirante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Documento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Aspirante">
+              <PropertyRef Name="Id_Tipo_Documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Municipio_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Municipio">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Estado_Inscripcion">
+          <End Role="Estado_Inscripcion" Type="Self.Estado_Inscripcion" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Inscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Estado_Inscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Modalidad">
+          <End Role="Modalidad" Type="Self.Modalidad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Modalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Periodo_Academico">
+          <End Role="Periodo_Academico" Type="Self.Periodo_Academico" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo_Academico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Periodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Programa_Academico">
+          <End Role="Programa_Academico" Type="Self.Programa_Academico" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programa_Academico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Programa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Sede">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Tipo_Aspirante">
+          <End Role="Tipo_Aspirante" Type="Self.Tipo_Aspirante" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Aspirante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Tipo_Aspirante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Tipo_Usuario">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Id_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UAMDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aspirante" EntityType="Self.Aspirante" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Estado_Civil" EntityType="Self.Estado_Civil" />
+          <EntitySet Name="Estado_Inscripcion" EntityType="Self.Estado_Inscripcion" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" />
+          <EntitySet Name="Grupo_Sanguineo" EntityType="Self.Grupo_Sanguineo" />
+          <EntitySet Name="Inscripcion" EntityType="Self.Inscripcion" />
+          <EntitySet Name="Modalidad" EntityType="Self.Modalidad" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Periodo_Academico" EntityType="Self.Periodo_Academico" />
+          <EntitySet Name="Programa_Academico" EntityType="Self.Programa_Academico" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" />
+          <EntitySet Name="Tipo_Aspirante" EntityType="Self.Tipo_Aspirante" />
+          <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Aspirante_Estado_Civil" Association="Self.FK_Aspirante_Estado_Civil">
+            <End Role="Estado_Civil" EntitySet="Estado_Civil" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Genero" Association="Self.FK_Aspirante_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Grupo_Sanguineo" Association="Self.FK_Aspirante_Grupo_Sanguineo">
+            <End Role="Grupo_Sanguineo" EntitySet="Grupo_Sanguineo" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Inscripcion" Association="Self.FK_Aspirante_Inscripcion">
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Municipio_Expedicion" Association="Self.FK_Aspirante_Municipio_Expedicion">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Municipio_Nacimiento" Association="Self.FK_Aspirante_Municipio_Nacimiento">
+            <End Role="Municipio" EntitySet="Municipio" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aspirante_Tipo_Documento" Association="Self.FK_Aspirante_Tipo_Documento">
+            <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
+            <End Role="Aspirante" EntitySet="Aspirante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Municipio_Departamento" Association="Self.FK_Municipio_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Estado_Inscripcion" Association="Self.FK_Inscripcion_Estado_Inscripcion">
+            <End Role="Estado_Inscripcion" EntitySet="Estado_Inscripcion" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Modalidad" Association="Self.FK_Inscripcion_Modalidad">
+            <End Role="Modalidad" EntitySet="Modalidad" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Periodo_Academico" Association="Self.FK_Inscripcion_Periodo_Academico">
+            <End Role="Periodo_Academico" EntitySet="Periodo_Academico" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Programa_Academico" Association="Self.FK_Inscripcion_Programa_Academico">
+            <End Role="Programa_Academico" EntitySet="Programa_Academico" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Sede" Association="Self.FK_Inscripcion_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Tipo_Aspirante" Association="Self.FK_Inscripcion_Tipo_Aspirante">
+            <End Role="Tipo_Aspirante" EntitySet="Tipo_Aspirante" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Usuario" Association="Self.FK_Inscripcion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UAMDBModelStoreContainer" CdmEntityContainer="UAMDBEntities">
+          <EntitySetMapping Name="Aspirante">
+            <EntityTypeMapping TypeName="UAMDBModel.Aspirante">
+              <MappingFragment StoreEntitySet="Aspirante">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Id_Ciudad_Nacimiento" ColumnName="Id_Ciudad_Nacimiento" />
+                <ScalarProperty Name="Id_Grupo_Sanguineo" ColumnName="Id_Grupo_Sanguineo" />
+                <ScalarProperty Name="Id_Tipo_Documento" ColumnName="Id_Tipo_Documento" />
+                <ScalarProperty Name="Numero_Documento" ColumnName="Numero_Documento" />
+                <ScalarProperty Name="Fecha_Expedicion" ColumnName="Fecha_Expedicion" />
+                <ScalarProperty Name="Id_Ciudad_Expedicion" ColumnName="Id_Ciudad_Expedicion" />
+                <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
+                <ScalarProperty Name="Id_Estado_Civil" ColumnName="Id_Estado_Civil" />
+                <ScalarProperty Name="Numero_Telefono" ColumnName="Numero_Telefono" />
+                <ScalarProperty Name="Numero_Celular" ColumnName="Numero_Celular" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Id_Inscripcion" ColumnName="Id_Inscripcion" />
+                <ScalarProperty Name="Completo" ColumnName="Completo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="UAMDBModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado_Civil">
+            <EntityTypeMapping TypeName="UAMDBModel.Estado_Civil">
+              <MappingFragment StoreEntitySet="Estado_Civil">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado_Inscripcion">
+            <EntityTypeMapping TypeName="UAMDBModel.Estado_Inscripcion">
+              <MappingFragment StoreEntitySet="Estado_Inscripcion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genero">
+            <EntityTypeMapping TypeName="UAMDBModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupo_Sanguineo">
+            <EntityTypeMapping TypeName="UAMDBModel.Grupo_Sanguineo">
+              <MappingFragment StoreEntitySet="Grupo_Sanguineo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripcion">
+            <EntityTypeMapping TypeName="UAMDBModel.Inscripcion">
+              <MappingFragment StoreEntitySet="Inscripcion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Tipo_Aspirante" ColumnName="Id_Tipo_Aspirante" />
+                <ScalarProperty Name="Id_Modalidad" ColumnName="Id_Modalidad" />
+                <ScalarProperty Name="Id_Sede" ColumnName="Id_Sede" />
+                <ScalarProperty Name="Id_Programa" ColumnName="Id_Programa" />
+                <ScalarProperty Name="Id_Periodo" ColumnName="Id_Periodo" />
+                <ScalarProperty Name="Id_Estado_Inscripcion" ColumnName="Id_Estado_Inscripcion" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Completo" ColumnName="Completo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modalidad">
+            <EntityTypeMapping TypeName="UAMDBModel.Modalidad">
+              <MappingFragment StoreEntitySet="Modalidad">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipio">
+            <EntityTypeMapping TypeName="UAMDBModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="UAMDBModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodo_Academico">
+            <EntityTypeMapping TypeName="UAMDBModel.Periodo_Academico">
+              <MappingFragment StoreEntitySet="Periodo_Academico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programa_Academico">
+            <EntityTypeMapping TypeName="UAMDBModel.Programa_Academico">
+              <MappingFragment StoreEntitySet="Programa_Academico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="UAMDBModel.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Aspirante">
+            <EntityTypeMapping TypeName="UAMDBModel.Tipo_Aspirante">
+              <MappingFragment StoreEntitySet="Tipo_Aspirante">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Documento">
+            <EntityTypeMapping TypeName="UAMDBModel.Tipo_Documento">
+              <MappingFragment StoreEntitySet="Tipo_Documento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Usuario">
+            <EntityTypeMapping TypeName="UAMDBModel.Tipo_Usuario">
+              <MappingFragment StoreEntitySet="Tipo_Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="UAMDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id_Rol" ColumnName="Id_Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
